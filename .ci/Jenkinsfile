@@ -28,11 +28,20 @@ pipeline {
                 git branch: "master",
                         credentialsId: "github-username",
                         url: "https://github.com/Jamsek-m/rest-utils-lib.git"
-                COMMIT_AUTHOR = sh (
-                        script: 'git --no-pager show -s --format=\'%ae\'',
-                        returnStdout: true
-                ).trim()
-                sh "echo $COMMIT_AUTHOR"
+
+            }
+        }
+        stage("Seting environment") {
+            steps {
+                step {
+                    COMMIT_AUTHOR = sh (
+                            script: 'git --no-pager show -s --format=\'%ae\'',
+                            returnStdout: true
+                    ).trim()
+                }
+                step {
+                    sh "echo $COMMIT_AUTHOR"
+                }
             }
         }
         stage("Packaging application") {
