@@ -18,6 +18,7 @@ pipeline {
         NEXUS_REPOSITORY = "maven-snapshots"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-username"
+        COMMIT_AUTHOR = ""
 
     }
 
@@ -27,6 +28,8 @@ pipeline {
                 git branch: "master",
                         credentialsId: "github-username",
                         url: "https://github.com/Jamsek-m/rest-utils-lib.git"
+                sh COMMIT_AUTHOR=$(git show --name-only)
+                sh echo "Author: $COMMIT_AUTHOR"
             }
         }
         stage("Packaging application") {
