@@ -1,0 +1,24 @@
+pipeline {
+
+    agent any
+
+    tools {
+        maven "mvn-3.6"
+        jdk "jdk-13"
+    }
+
+    stages {
+        stage("Cloning git") {
+            steps {
+                git branch: "master",
+                        credentialsId: "github-token",
+                        url: "https://github.com/Jamsek-m/rest-utils-lib.git"
+            }
+        }
+        stage("Packaging application") {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+    }
+}
