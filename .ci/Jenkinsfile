@@ -18,7 +18,7 @@ pipeline {
         NEXUS_REPOSITORY = "maven-snapshots"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-username"
-        COMMIT_AUTHOR = ""
+        commitAuthor = ""
 
     }
 
@@ -34,8 +34,8 @@ pipeline {
         stage("Seting environment") {
             steps {
                 sh "git --no-pager show -s --format='%ae' > COMMIT_INFO"
-                COMMIT_AUTHOR = readFile("COMMIT_INFO").trim()
-                sh "echo $COMMIT_AUTHOR"
+                commitAuthor = readFile("COMMIT_INFO").trim()
+                sh "echo $commitAuthor"
             }
         }
         stage("Packaging application") {
