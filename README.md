@@ -1,7 +1,6 @@
 # REST Utils library 1.0.0
+[![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)](https://jenkins.mjamsek.com/job/rest-utils-lib/)
 > Utility library for REST services
-
-[![Build Status](https://jenkins.mjamsek.com/job/rest-utils-lib/badge/icon)](https://jenkins.mjamsek.com/job/rest-utils-lib/)
 
 ## Library content
 
