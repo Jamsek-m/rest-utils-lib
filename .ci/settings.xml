@@ -2,18 +2,18 @@
     <servers>
         <server>
             <id>mjamsek-public</id>
-            <username>${CI_NEXUS_USER}</username>
-            <password>${CI_NEXUS_PASS}</password>
+            <username>CI_NEXUS_USER</username>
+            <password>CI_NEXUS_PASS</password>
         </server>
         <server>
             <id>mjamsek-releases</id>
-            <username>${CI_NEXUS_USER}</username>
-            <password>${CI_NEXUS_PASS}</password>
+            <username>CI_NEXUS_USER</username>
+            <password>CI_NEXUS_PASS</password>
         </server>
         <server>
             <id>mjamsek-snapshots</id>
-            <username>${CI_NEXUS_USER}</username>
-            <password>${CI_NEXUS_PASS}</password>
+            <username>CI_NEXUS_USER</username>
+            <password>CI_NEXUS_PASS</password>
         </server>
     </servers>
 

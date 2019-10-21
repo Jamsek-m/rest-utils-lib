@@ -17,7 +17,9 @@ pipeline {
         }
         stage("Packaging application") {
             steps {
-                sh "mvn clean deploy --settings .ci/settings.xml"
+                withCredentials([usernamePassword(credentialsId: 'nexus-username', usernameVariable: 'CI_NEXUS_USER', passwordVariable: 'CI_NEXUS_PASS')]) {
+                    sh "mvn clean deploy --settings .ci/settings.xml"
+                }
             }
         }
     }
