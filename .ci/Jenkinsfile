@@ -11,7 +11,7 @@ pipeline {
         stage("Cloning git") {
             steps {
                 git branch: "master",
-                        credentialsId: "github-token",
+                        credentialsId: "github-username",
                         url: "https://github.com/Jamsek-m/rest-utils-lib.git"
             }
         }
