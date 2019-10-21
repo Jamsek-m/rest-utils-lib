@@ -33,15 +33,9 @@ pipeline {
         }
         stage("Seting environment") {
             steps {
-                step {
-                    COMMIT_AUTHOR = sh (
-                            script: 'git --no-pager show -s --format=\'%ae\'',
-                            returnStdout: true
-                    ).trim()
-                }
-                step {
-                    sh "echo $COMMIT_AUTHOR"
-                }
+                sh "git --no-pager show -s --format='%ae' > COMMIT_INFO"
+                COMMIT_AUTHOR = readFile("COMMIT_INFO").trim()
+                sh "echo $COMMIT_AUTHOR"
             }
         }
         stage("Packaging application") {
