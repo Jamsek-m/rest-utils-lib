@@ -36,7 +36,6 @@ pipeline {
                 script {
                     sh "git --no-pager show -s --format='%ae' > COMMIT_INFO"
                     commitAuthor = readFile("COMMIT_INFO").trim()
-                    sh "echo $commitAuthor"
                 }
             }
         }
@@ -50,10 +49,10 @@ pipeline {
     }
     post {
         success {
-            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' from ${env.GIT_AUTHOR_NAME} (${env.BUILD_URL})")
+            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' from ${commitAuthor} (${env.BUILD_URL})")
         }
         failure {
-            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' from ${commitAuthor} (${env.BUILD_URL})")
         }
     }
 }
