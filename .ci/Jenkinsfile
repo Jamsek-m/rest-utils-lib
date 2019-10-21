@@ -32,7 +32,7 @@ pipeline {
         stage("Packaging application") {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-username', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh "mvn clean deploy -Dci.nexus.user=$USERNAME -Dci.nexus.pass=$PASSWORD --setings .ci/settings.xml"
+                    sh "mvn clean deploy -Dci.nexus.user=$USERNAME -Dci.nexus.pass=$PASSWORD --settings .ci/settings.xml"
                 }
             }
         }
