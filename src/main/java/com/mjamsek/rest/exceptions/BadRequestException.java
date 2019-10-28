@@ -4,7 +4,7 @@ import javax.ws.rs.core.Response;
 
 public class BadRequestException extends RestException {
     
-    public BadRequestException(String message) {
-        super(message, Response.Status.BAD_REQUEST);
+    public BadRequestException(String code) {
+        super(code, Response.Status.BAD_REQUEST.getStatusCode());
     }
 }

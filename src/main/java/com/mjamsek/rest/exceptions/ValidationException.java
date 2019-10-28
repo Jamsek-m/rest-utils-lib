@@ -49,7 +49,7 @@ public class ValidationException extends RestException {
         return this;
     }
     
-    public ValidationExceptionResponse getResponse() {
+    public ValidationExceptionResponse getValidationResponse() {
         return this.response;
     }
     
