@@ -1,6 +1,25 @@
 # REST Utils library 1.0.0
-[![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)](https://jenkins.mjamsek.com/job/rest-utils-lib/)
+
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/releases)
+![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)
+[![GitHub license](https://img.shields.io/github/license/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/blob/develop/LICENSE)
+
 > Utility library for REST services
+
+## Requirements
+
+Library is compatible with Java 11+
+
+## Usage
+
+Import library in your project:
+```xml
+<dependency>
+    <groupId>com.mjamsek.rest</groupId>
+    <artifactId>rest-utils</artifactId>
+    <version>${rest-utils-lib.version}</version>
+</dependency>
+``` 
 
 ## Library content
 
