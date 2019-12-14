@@ -4,7 +4,7 @@ import javax.ws.rs.core.Response;
 
 public class ForbiddenException extends RestException {
     
-    public ForbiddenException(String message) {
-        super(message, Response.Status.FORBIDDEN.getStatusCode());
+    public ForbiddenException(String code) {
+        super(code, Response.Status.FORBIDDEN.getStatusCode());
     }
 }
