@@ -9,22 +9,27 @@ public class ConflictException extends RestException {
     }
     
     public ConflictException(String code, Throwable cause) {
-        super(code, Response.Status.CONFLICT.getStatusCode(), cause);
+        super(code, Response.Status.CONFLICT.getStatusCode());
+        super.setCause(cause);
     }
     
     public ConflictException(String code, String entity) {
-        super(code, Response.Status.CONFLICT.getStatusCode(), entity);
+        super(code, Response.Status.CONFLICT.getStatusCode());
+        super.setEntity(entity);
     }
     
     public ConflictException(String code, String entity, Throwable cause) {
-        super(code, Response.Status.CONFLICT.getStatusCode(), entity, cause);
+        super(code, Response.Status.CONFLICT.getStatusCode());
+        super.setEntity(entity);
+        super.setCause(cause);
     }
     
     public ConflictException(String code, String entity, String field) {
-        super(code, Response.Status.CONFLICT.getStatusCode(), entity, field);
+        super(code, Response.Status.CONFLICT.getStatusCode(), field, entity);
     }
     
     public ConflictException(String code, String entity, String field, Throwable cause) {
-        super(code, Response.Status.CONFLICT.getStatusCode(), entity, field, cause);
+        super(code, Response.Status.CONFLICT.getStatusCode(), field, entity);
+        super.setCause(cause);
     }
 }

@@ -10,16 +10,10 @@ public class RestException extends RuntimeException {
     
     protected ExceptionResponse response;
     
+    protected Throwable cause;
+    
     public RestException(String code) {
         super(code);
-        this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-    }
-    
-    public RestException(String code, Throwable cause) {
-        super(code, cause);
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -34,51 +28,25 @@ public class RestException extends RuntimeException {
         this.response.setStatus(this.status);
     }
     
-    public RestException(String code, Integer status, Throwable cause) {
-        super(code, cause);
-        this.status = status;
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-    }
-    
-    public RestException(String code, String entity) {
+    public RestException(String code, String field) {
         super(code);
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
         this.response.setCode(code);
         this.response.setStatus(this.status);
-        this.response.setEntity(entity);
+        this.response.setField(field);
     }
     
-    public RestException(String code, String entity, Throwable cause) {
-        super(code, cause);
-        this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-        this.response.setEntity(entity);
-    }
-    
-    public RestException(String code, Integer status, String entity) {
+    public RestException(String code, Integer status, String field) {
         super(code);
         this.status = status;
         this.response = new ExceptionResponse();
         this.response.setCode(code);
         this.response.setStatus(this.status);
-        this.response.setEntity(entity);
+        this.response.setField(field);
     }
     
-    public RestException(String code, Integer status, String entity, Throwable cause) {
-        super(code, cause);
-        this.status = status;
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-        this.response.setEntity(entity);
-    }
-    
-    public RestException(String code, String entity, String field) {
+    public RestException(String code, String field, String entity) {
         super(code);
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
@@ -88,28 +56,8 @@ public class RestException extends RuntimeException {
         this.response.setField(field);
     }
     
-    public RestException(String code, String entity, String field, Throwable cause) {
-        super(code, cause);
-        this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-        this.response.setEntity(entity);
-        this.response.setField(field);
-    }
-    
-    public RestException(String code, Integer status, String entity, String field) {
+    public RestException(String code, Integer status, String field, String entity) {
         super(code);
-        this.status = status;
-        this.response = new ExceptionResponse();
-        this.response.setCode(code);
-        this.response.setStatus(this.status);
-        this.response.setEntity(entity);
-        this.response.setField(field);
-    }
-    
-    public RestException(String code, Integer status, String entity, String field, Throwable cause) {
-        super(code, cause);
         this.status = status;
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -125,6 +73,16 @@ public class RestException extends RuntimeException {
     
     public RestException setMessage(String message) {
         this.response.setMessage(message);
+        return this;
+    }
+    
+    public RestException setEntity(String entity) {
+        this.response.setEntity(entity);
+        return this;
+    }
+    
+    public RestException setCause(Throwable cause) {
+        this.cause = cause;
         return this;
     }
     
