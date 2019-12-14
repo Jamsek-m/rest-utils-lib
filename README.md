@@ -80,6 +80,61 @@ String header = HttpHeaders.X_SERVICE_VERSION;
 String header = HttpHeaders.X_POWERED_BY;
 ```
 
+* *X-Content-Type-Options*
+```java
+String header = HttpHeaders.X_CONTENT_TYPE_OPTIONS;
+```
+
+* *X-XSS-Protection*
+```java
+String header = HttpHeaders.X_XSS_PROTECTION;
+```
+
+* *X-Frame-Options*
+```java
+String header = HttpHeaders.X_FRAME_OPTIONS;
+```
+
+* *Strict-Transport-Security*
+```java
+String header = HttpHeaders.STRICT_TRANSPORT_SECURITY;
+```
+
+* *Content-Security-Policy*
+```java
+String header = HttpHeaders.CONTENT_SECURITY_POLICY;
+```
+
+* *Access-Control-Allow-Origin*
+```java
+String header = HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN;
+```
+
+* *Access-Control-Expose-Headers*
+```java
+String header = HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS;
+```
+
+* *Access-Control-Allow-Credentials*
+```java
+String header = HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS;
+```
+
+* *Access-Control-Allow-Methods*
+```java
+String header = HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS;
+```
+
+* *Access-Control-Allow-Headers*
+```java
+String header = HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS;
+```
+
+* *Timing-Allow-Origin*
+```java
+String header = HttpHeaders.TIMING_ALLOW_ORIGIN;
+```
+
 ### Exceptions
 
 #### Rest exception
