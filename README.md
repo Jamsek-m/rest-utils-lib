@@ -160,7 +160,7 @@ public class ValidationExceptionMapper implements ExceptionMapper<ValidationExce
     
     @Override
     public Response toResponse(ValidationException e) {
-        return Response.status(e.getResponse().getStatus()).entity(e.getResponse()).build();
+        return e.getResponse().createResponse();
     }
 }
 ```
