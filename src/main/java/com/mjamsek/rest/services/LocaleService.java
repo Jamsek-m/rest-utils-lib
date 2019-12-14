@@ -1,20 +1,17 @@
 package com.mjamsek.rest.services;
 
-import javax.servlet.http.HttpServletRequest;
+import com.mjamsek.rest.services.impl.LocaleServiceImpl;
+
 import java.util.Locale;
 
 public interface LocaleService {
     
-    default Locale getLocale() {
-        return Locale.ENGLISH;
+    default LocaleService getInstance() {
+        return new LocaleServiceImpl();
     }
     
-    String getTranslation(String key);
+    String getTranslation(String key, Locale locale);
     
-    String getTranslation(String key, Object... params);
-    
-    String getTranslation(String key, HttpServletRequest request);
-    
-    String getTranslation(String key, HttpServletRequest request, Object... params);
+    String getTranslation(String key, Locale locale, Object... params);
     
 }

@@ -3,8 +3,6 @@ package com.mjamsek.rest.services.impl;
 import com.mjamsek.rest.services.LocaleService;
 
 import javax.enterprise.context.RequestScoped;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.Context;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -20,46 +18,19 @@ public class LocaleServiceImpl implements LocaleService {
     
     private static final String TRANSLATION_DIR = "i18n/translations";
     
-    @Context
-    private HttpServletRequest request;
-    
     @Override
-    public Locale getLocale() {
-        return this.request.getLocale();
-    }
-    
-    @Override
-    public String getTranslation(String key) {
-        Optional<ResourceBundle> translations = this.getTranslations();
+    public String getTranslation(String key, Locale locale) {
+        Optional<ResourceBundle> translations = this.getTranslations(locale);
         return translations.map(resourceBundle -> resourceBundle.getString(key)).orElse(key);
     }
     
     @Override
-    public String getTranslation(String key, Object... params) {
-        Optional<ResourceBundle> translations = this.getTranslations();
+    public String getTranslation(String key, Locale locale, Object... params) {
+        Optional<ResourceBundle> translations = this.getTranslations(locale);
         return translations.map(resourceBundle -> {
             String message = resourceBundle.getString(key);
             return MessageFormat.format(message, params);
         }).orElse(key);
-    }
-    
-    @Override
-    public String getTranslation(String key, HttpServletRequest request) {
-        Optional<ResourceBundle> translations = this.getTranslations(request.getLocale());
-        return translations.map(resourceBundle -> resourceBundle.getString(key)).orElse(key);
-    }
-    
-    @Override
-    public String getTranslation(String key, HttpServletRequest request, Object... params) {
-        Optional<ResourceBundle> translations = this.getTranslations(request.getLocale());
-        return translations.map(resourceBundle -> {
-            String message = resourceBundle.getString(key);
-            return MessageFormat.format(message, params);
-        }).orElse(key);
-    }
-    
-    private Optional<ResourceBundle> getTranslations() {
-        return this.getTranslations(this.getLocale());
     }
     
     private Optional<ResourceBundle> getTranslations(Locale locale) {
@@ -77,5 +48,4 @@ public class LocaleServiceImpl implements LocaleService {
             }
         }
     }
-    
 }
