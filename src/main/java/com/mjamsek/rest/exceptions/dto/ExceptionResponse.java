@@ -1,9 +1,9 @@
 package com.mjamsek.rest.exceptions.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -14,6 +14,7 @@ public class ExceptionResponse {
     protected String entity;
     protected String field;
     protected String moreInfo;
+    @JsonIgnore
     protected Object[] params;
     protected Map<String, Object> additionalData;
     
