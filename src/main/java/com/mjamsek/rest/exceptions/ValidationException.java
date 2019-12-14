@@ -1,119 +1,51 @@
 package com.mjamsek.rest.exceptions;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.mjamsek.rest.common.HttpStatus;
+import com.mjamsek.rest.exceptions.dto.ExceptionResponse;
 
 
 public class ValidationException extends RestException {
     
-    private ValidationExceptionResponse response;
-    
     public ValidationException(String code) {
         super(code);
-        this.response = new ValidationExceptionResponse();
-        this.response.code = code;
+        this.response = new ExceptionResponse();
+        this.response.setCode(code);
+        this.response.setStatus(HttpStatus.VALIDATION_FAILED);
     }
     
     public ValidationException withStatus(int status) {
-        this.response.status = status;
+        this.response.setStatus(status);
         return this;
     }
     
     public ValidationException withField(String field) {
-        this.response.field = field;
+        this.response.setField(field);
         return this;
     }
     
     public ValidationException withEntity(String entity) {
-        this.response.entity = entity;
+        this.response.setEntity(entity);
         return this;
     }
     
     public ValidationException withDescription(String description) {
-        this.response.description = description;
+        this.response.setMessage(description);
         return this;
     }
     
     public ValidationException withMoreInfo(String moreInfo) {
-        this.response.moreInfo = moreInfo;
+        this.response.setMoreInfo(moreInfo);
         return this;
     }
     
     public ValidationException isValidationError() {
-        this.response.status = HttpStatus.VALIDATION_FAILED;
+        this.response.setStatus(HttpStatus.VALIDATION_FAILED);
         return this;
     }
     
     public ValidationException isBadRequest() {
-        this.response.status = HttpStatus.BAD_REQUEST;
+        this.response.setStatus(HttpStatus.BAD_REQUEST);
         return this;
     }
     
-    public ValidationExceptionResponse getValidationResponse() {
-        return this.response;
-    }
-    
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class ValidationExceptionResponse {
-        
-        private int status;
-        
-        private String code;
-        
-        private String field;
-        
-        private String entity;
-        
-        private String description;
-        
-        private String moreInfo;
-        
-        public int getStatus() {
-            return status;
-        }
-        
-        public void setStatus(int status) {
-            this.status = status;
-        }
-        
-        public String getCode() {
-            return code;
-        }
-        
-        public void setCode(String code) {
-            this.code = code;
-        }
-        
-        public String getField() {
-            return field;
-        }
-        
-        public void setField(String field) {
-            this.field = field;
-        }
-        
-        public String getEntity() {
-            return entity;
-        }
-        
-        public void setEntity(String entity) {
-            this.entity = entity;
-        }
-        
-        public String getDescription() {
-            return description;
-        }
-        
-        public void setDescription(String description) {
-            this.description = description;
-        }
-        
-        public String getMoreInfo() {
-            return moreInfo;
-        }
-        
-        public void setMoreInfo(String moreInfo) {
-            this.moreInfo = moreInfo;
-        }
-    }
 }

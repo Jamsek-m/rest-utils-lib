@@ -77,7 +77,7 @@ public class ExceptionResponse {
         return params;
     }
     
-    public void setParams(Object[] params) {
+    public void setParams(Object... params) {
         this.params = params;
     }
 }
