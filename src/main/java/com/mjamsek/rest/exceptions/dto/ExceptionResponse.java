@@ -3,6 +3,8 @@ package com.mjamsek.rest.exceptions.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExceptionResponse {
@@ -13,6 +15,7 @@ public class ExceptionResponse {
     protected String field;
     protected String moreInfo;
     protected Object[] params;
+    protected Map<String, Object> additionalData = new HashMap<>();
     
     public Response createResponse() {
         ExceptionResponse body = new ExceptionResponse();
@@ -22,6 +25,7 @@ public class ExceptionResponse {
         body.setEntity(this.entity);
         body.setField(this.field);
         body.setMoreInfo(this.moreInfo);
+        body.setAdditionalData(this.additionalData);
         return Response.status(this.status).entity(body).build();
     }
     
@@ -79,5 +83,13 @@ public class ExceptionResponse {
     
     public void setParams(Object... params) {
         this.params = params;
+    }
+    
+    public Map<String, Object> getAdditionalData() {
+        return additionalData;
+    }
+    
+    public void setAdditionalData(Map<String, Object> additionalData) {
+        this.additionalData = additionalData;
     }
 }

@@ -3,6 +3,8 @@ package com.mjamsek.rest.exceptions;
 import com.mjamsek.rest.exceptions.dto.ExceptionResponse;
 
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RestException extends RuntimeException {
     
@@ -88,6 +90,19 @@ public class RestException extends RuntimeException {
     
     public RestException setParams(Object... params) {
         this.response.setParams(params);
+        return this;
+    }
+    
+    public RestException addAdditionalData(String dataKey, Object dataValue) {
+        if (this.response.getAdditionalData() == null) {
+            this.response.setAdditionalData(new HashMap<>());
+        }
+        this.response.getAdditionalData().put(dataKey, dataValue);
+        return this;
+    }
+    
+    public RestException setAdditionalData(Map<String, Object> additionalData) {
+        this.response.setAdditionalData(additionalData);
         return this;
     }
     
