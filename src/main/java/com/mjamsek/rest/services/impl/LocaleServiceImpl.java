@@ -43,19 +43,39 @@ public class LocaleServiceImpl implements LocaleService {
         }).orElse(key);
     }
     
+    @Override
+    public String getTranslation(String key, HttpServletRequest request) {
+        Optional<ResourceBundle> translations = this.getTranslations(request.getLocale());
+        return translations.map(resourceBundle -> resourceBundle.getString(key)).orElse(key);
+    }
+    
+    @Override
+    public String getTranslation(String key, HttpServletRequest request, Object... params) {
+        Optional<ResourceBundle> translations = this.getTranslations(request.getLocale());
+        return translations.map(resourceBundle -> {
+            String message = resourceBundle.getString(key);
+            return MessageFormat.format(message, params);
+        }).orElse(key);
+    }
+    
     private Optional<ResourceBundle> getTranslations() {
+        return this.getTranslations(this.getLocale());
+    }
+    
+    private Optional<ResourceBundle> getTranslations(Locale locale) {
         try {
-            return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, this.getLocale()));
+            return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, locale));
         } catch (MissingResourceException e) {
             try {
                 return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, new Locale("en")));
             } catch (MissingResourceException e2) {
                 LOG.warning(String.format(
                     "Cannot load translation bundle for language '%s' or for fallback language 'en'!",
-                    this.getLocale().toLanguageTag()
+                    locale.toLanguageTag()
                 ));
                 return Optional.empty();
             }
         }
     }
+    
 }
