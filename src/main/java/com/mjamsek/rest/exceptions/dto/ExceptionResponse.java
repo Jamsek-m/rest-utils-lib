@@ -15,7 +15,7 @@ public class ExceptionResponse {
     protected String field;
     protected String moreInfo;
     protected Object[] params;
-    protected Map<String, Object> additionalData = new HashMap<>();
+    protected Map<String, Object> additionalData;
     
     public Response createResponse() {
         ExceptionResponse body = new ExceptionResponse();
