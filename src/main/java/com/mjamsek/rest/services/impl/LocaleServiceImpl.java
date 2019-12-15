@@ -38,7 +38,7 @@ public class LocaleServiceImpl implements LocaleService {
             return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, locale));
         } catch (MissingResourceException e) {
             try {
-                return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, new Locale("en")));
+                return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, Locale.ENGLISH));
             } catch (MissingResourceException e2) {
                 LOG.warning(String.format(
                     "Cannot load translation bundle for language '%s' or for fallback language 'en'!",
