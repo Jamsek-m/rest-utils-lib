@@ -21,14 +21,22 @@ public class LocaleServiceImpl implements LocaleService {
     @Override
     public String getTranslation(String key, Locale locale) {
         Optional<ResourceBundle> translations = this.getTranslations(locale);
-        return translations.map(resourceBundle -> resourceBundle.getString(key)).orElse(key);
+        return translations.map(resourceBundle -> {
+            if (resourceBundle.containsKey(key)) {
+                return resourceBundle.getString(key);
+            }
+            return key;
+        }).orElse(key);
     }
     
     @Override
     public String getTranslation(String key, Locale locale, Object... params) {
         Optional<ResourceBundle> translations = this.getTranslations(locale);
         return translations.map(resourceBundle -> {
-            String message = resourceBundle.getString(key);
+            String message = key;
+            if (resourceBundle.containsKey(key)) {
+                message = resourceBundle.getString(key);
+            }
             return MessageFormat.format(message, params);
         }).orElse(key);
     }
