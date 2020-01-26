@@ -11,6 +11,7 @@ public class HttpHeaders {
     public static final String X_CONTENT_TYPE_OPTIONS = "X-Content-Type-Options";
     public static final String X_XSS_PROTECTION = "X-XSS-Protection";
     public static final String X_FRAME_OPTIONS = "X-Frame-Options";
+    public static final String X_REQUEST_ID = "X-Request-Id";
     public static final String STRICT_TRANSPORT_SECURITY = "Strict-Transport-Security";
     public static final String CONTENT_SECURITY_POLICY = "Content-Security-Policy";
     
