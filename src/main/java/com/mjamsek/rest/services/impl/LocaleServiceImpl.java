@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -48,10 +49,11 @@ public class LocaleServiceImpl implements LocaleService {
             try {
                 return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, Locale.ENGLISH));
             } catch (MissingResourceException e2) {
-                LOG.warning(String.format(
-                    "Cannot load translation bundle for language '%s' or for fallback language 'en'!",
+                LOG.log(
+                    Level.WARNING,
+                    "Cannot load translation bundle for language '{0}' or for fallback language 'en'!",
                     locale.toLanguageTag()
-                ));
+                );
                 return Optional.empty();
             }
         }
