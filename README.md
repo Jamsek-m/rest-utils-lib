@@ -1,4 +1,4 @@
-# REST Utils library 1.0.0
+# REST Utils Library
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/releases)
 ![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)
