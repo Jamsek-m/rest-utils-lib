@@ -2,8 +2,6 @@ package com.mjamsek.rest.test.tests;
 
 import com.mjamsek.rest.factories.LocaleServiceFactory;
 import com.mjamsek.rest.services.LocaleService;
-import com.mjamsek.rest.services.impl.LocaleServiceImpl;
-import com.mjamsek.rest.utils.UrlUtil;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
