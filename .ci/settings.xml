@@ -1,4 +1,5 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
     <servers>
         <server>
             <id>mjamsek-public</id>
@@ -17,14 +18,13 @@
         </server>
     </servers>
 
-<!--    <mirrors>-->
-<!--        <mirror>-->
-<!--            <id>mjamsek-public</id>-->
-<!--            <name>mjamsek-public</name>-->
-<!--            <url>https://nexus.mjamsek.com/repository/maven-public</url>-->
-<!--            <mirrorOf>*</mirrorOf>-->
-<!--        </mirror>-->
-<!--    </mirrors>-->
+    <mirrors>
+        <mirror>
+            <id>central</id>
+            <url>https://nexus.mjamsek.com/repository/maven-public</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
 
     <profiles>
         <profile>
