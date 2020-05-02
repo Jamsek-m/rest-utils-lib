@@ -18,13 +18,13 @@
         </server>
     </servers>
 
-    <mirrors>
-        <mirror>
-            <id>central</id>
-            <url>https://nexus.mjamsek.com/repository/maven-public</url>
-            <mirrorOf>*</mirrorOf>
-        </mirror>
-    </mirrors>
+<!--    <mirrors>-->
+<!--        <mirror>-->
+<!--            <id>central</id>-->
+<!--            <url>https://nexus.mjamsek.com/repository/maven-public</url>-->
+<!--            <mirrorOf>*</mirrorOf>-->
+<!--        </mirror>-->
+<!--    </mirrors>-->
 
     <profiles>
         <profile>
