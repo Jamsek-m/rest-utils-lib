@@ -16,8 +16,9 @@ public class DependencyAppender implements MavenDependencyAppender {
         // MavenRemoteRepository customRepo = MavenRemoteRepositories
         //     .createRemoteRepository("mjamsek-public", "https://nexus.mjamsek.com/repository/maven-public", "default");
         // customRepo.setUpdatePolicy(MavenUpdatePolicy.UPDATE_POLICY_ALWAYS);
-        resolver.workOffline();
-        return resolver; //.withRemoteRepo(customRepo);
+        resolver.withMavenCentralRepo(false);
+        
+        return resolver;
     }
     
     @Override
