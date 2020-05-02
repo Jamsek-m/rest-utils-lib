@@ -18,6 +18,7 @@ public class LocaleServiceImpl implements LocaleService {
     private static final Logger LOG = LogManager.getLogManager().getLogger(LocaleServiceImpl.class.getSimpleName());
     
     private static final String TRANSLATION_DIR = "i18n/translations";
+    private static final Locale LOCALE_EN = new Locale("en", "US");
     
     @Override
     public String getTranslation(String key, Locale locale) {
@@ -34,20 +35,21 @@ public class LocaleServiceImpl implements LocaleService {
     public String getTranslation(String key, Locale locale, Object... params) {
         Optional<ResourceBundle> translations = this.getTranslations(locale);
         return translations.map(resourceBundle -> {
-            String message = key;
             if (resourceBundle.containsKey(key)) {
-                message = resourceBundle.getString(key);
+                String message = resourceBundle.getString(key);
+                return MessageFormat.format(message, params);
             }
-            return MessageFormat.format(message, params);
+            return key;
         }).orElse(key);
     }
     
     private Optional<ResourceBundle> getTranslations(Locale locale) {
+        ResourceBundle.Control localeControl = ResourceBundle.Control.getNoFallbackControl(ResourceBundle.Control.FORMAT_PROPERTIES);
         try {
-            return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, locale));
+            return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, locale, localeControl));
         } catch (MissingResourceException e) {
             try {
-                return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, Locale.ENGLISH));
+                return Optional.of(ResourceBundle.getBundle(TRANSLATION_DIR, LOCALE_EN, localeControl));
             } catch (MissingResourceException e2) {
                 LOG.log(
                     Level.WARNING,
