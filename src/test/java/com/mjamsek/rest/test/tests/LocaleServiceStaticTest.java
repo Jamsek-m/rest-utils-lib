@@ -44,8 +44,7 @@ public class LocaleServiceStaticTest {
         
         assertEquals("English value", localeService.getTranslation("property.translated", LOCALE_EN));
         assertEquals("Slovenska vrednost", localeService.getTranslation("property.translated", LOCALE_SL));
-        // TODO: verify
-        assertEquals("Slovenska vrednost", localeService.getTranslation("property.translated", LOCALE_DE));
+        assertEquals("Default value", localeService.getTranslation("property.translated", LOCALE_DE));
         
         assertEquals("Default value", localeService.getTranslation("property.default", LOCALE_EN));
         assertEquals("Default value", localeService.getTranslation("property.default", LOCALE_SL));
