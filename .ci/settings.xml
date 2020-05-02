@@ -17,6 +17,15 @@
         </server>
     </servers>
 
+<!--    <mirrors>-->
+<!--        <mirror>-->
+<!--            <id>mjamsek-public</id>-->
+<!--            <name>mjamsek-public</name>-->
+<!--            <url>https://nexus.mjamsek.com/repository/maven-public</url>-->
+<!--            <mirrorOf>*</mirrorOf>-->
+<!--        </mirror>-->
+<!--    </mirrors>-->
+
     <profiles>
         <profile>
             <id>mjamsek</id>
@@ -24,6 +33,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <repositories>
+                <repository>
+                    <id>mjamsek-public</id>
+                    <url>https://nexus.mjamsek.com/repository/maven-public</url>
+                </repository>
                 <repository>
                     <id>mjamsek-snapshots</id>
                     <url>https://nexus.mjamsek.com/repository/maven-snapshots</url>
