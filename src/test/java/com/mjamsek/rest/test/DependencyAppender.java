@@ -2,9 +2,6 @@ package com.mjamsek.rest.test;
 
 import com.kumuluz.ee.testing.arquillian.spi.MavenDependencyAppender;
 import org.jboss.shrinkwrap.resolver.api.maven.ConfigurableMavenResolverSystem;
-import org.jboss.shrinkwrap.resolver.api.maven.repository.MavenRemoteRepositories;
-import org.jboss.shrinkwrap.resolver.api.maven.repository.MavenRemoteRepository;
-import org.jboss.shrinkwrap.resolver.api.maven.repository.MavenUpdatePolicy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +13,11 @@ public class DependencyAppender implements MavenDependencyAppender {
     
     @Override
     public ConfigurableMavenResolverSystem configureResolver(ConfigurableMavenResolverSystem resolver) {
-        MavenRemoteRepository customRepo = MavenRemoteRepositories
-            .createRemoteRepository("mjamsek-public", "https://nexus.mjamsek.com/repository/maven-public", "default");
-        customRepo.setUpdatePolicy(MavenUpdatePolicy.UPDATE_POLICY_ALWAYS);
-        return resolver.withRemoteRepo(customRepo);
+        // MavenRemoteRepository customRepo = MavenRemoteRepositories
+        //     .createRemoteRepository("mjamsek-public", "https://nexus.mjamsek.com/repository/maven-public", "default");
+        // customRepo.setUpdatePolicy(MavenUpdatePolicy.UPDATE_POLICY_ALWAYS);
+        resolver.workOffline();
+        return resolver; //.withRemoteRepo(customRepo);
     }
     
     @Override
