@@ -4,7 +4,7 @@ import javax.ws.rs.core.Response;
 
 public class ServiceCallException extends RestException {
     
-    private String serviceName;
+    private final String serviceName;
     
     public ServiceCallException(String code, String service) {
         super(code, Response.Status.SERVICE_UNAVAILABLE.getStatusCode());
