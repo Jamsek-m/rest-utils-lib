@@ -1,6 +1,6 @@
 # REST Utils Library
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/releases)
+[![Maven Central](https://img.shields.io/maven-central/v/com.mjamsek.rest/rest-utils)](https://mvnrepository.com/artifact/com.mjamsek.rest/rest-utils)
 [![Last commit](https://img.shields.io/github/last-commit/Jamsek-m/rest-utils-lib/develop)](https://github.com/Jamsek-m/rest-utils-lib/commits/develop)
 ![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)
 [![GitHub license](https://img.shields.io/github/license/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/blob/develop/LICENSE)
@@ -42,7 +42,7 @@ validator.assertNotBlank(request.field);
 validator.assertRegex(request.field, regexp);
 ```
 
-All of these methods throw ValidationException if assertion fails. More in [exceptions](#validation-exception)
+All of these methods throw ValidationException if assertion fails. More in [exceptions](#validation-exception).
 
 There are also available overloaded methods to provide additional information to user. 
 
@@ -191,8 +191,8 @@ Error when receiveing bad data from user. Returns 400.
 
 #### Forbidden & Unauthorized exception
 
-Return 401 or 403 if user lacks proper permissions.
+Return 401 or 403, if user lacks proper permissions.
 
 #### Not Found exception
 
-Thrown when requested entity does not exists and returns 404. It also provides overloaded constructor to easily describe to user what is missing.
+Thrown when requested entity does not exist and returns 404. It also provides an overloaded constructor to easily describe to user what is missing.

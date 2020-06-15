@@ -5,7 +5,7 @@
     <container qualifier="KumuluzEE" default="true">
 
         <configuration>
-            <property name="kumuluzVersion">3.9.0</property>
+            <property name="kumuluzVersion">3.10.0</property>
             <!-- <property name="includeRequiredLibraries">default</property> -->
         </configuration>
     </container>

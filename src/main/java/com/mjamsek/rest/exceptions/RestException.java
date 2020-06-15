@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class RestException extends RuntimeException {
     
-    protected int status;
+    protected final int status;
     
     protected ExceptionResponse response;
     
