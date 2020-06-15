@@ -1,6 +1,6 @@
 # REST Utils Library
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/releases)
+[![Maven Central](https://img.shields.io/maven-central/v/com.mjamsek.rest/rest-utils)](https://mvnrepository.com/artifact/com.mjamsek.rest/rest-utils)
 [![Last commit](https://img.shields.io/github/last-commit/Jamsek-m/rest-utils-lib/develop)](https://github.com/Jamsek-m/rest-utils-lib/commits/develop)
 ![Build Status](https://jenkins.mjamsek.com/buildStatus/icon?job=rest-utils-lib)
 [![GitHub license](https://img.shields.io/github/license/Jamsek-m/rest-utils-lib)](https://github.com/Jamsek-m/rest-utils-lib/blob/develop/LICENSE)
