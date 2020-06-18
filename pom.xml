@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <kumuluzee.version>3.10.0</kumuluzee.version>
-        <jackson.version>2.9.10.4</jackson.version>
+        <jackson.version>2.10.0.pr1</jackson.version>
         <jaxrs-api.version>2.1.1</jaxrs-api.version>
         <cdi-api.version>2.0</cdi-api.version>
 
