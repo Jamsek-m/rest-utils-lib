@@ -34,6 +34,8 @@ public class HttpHeaders {
     public static final String X_REQUEST_ID = "X-Request-Id";
     
     public static final String X_TOTAL_COUNT = "X-Total-Count";
+    public static final String X_LIMIT = "X-Limit";
+    public static final String X_OFFSET = "X-Offset";
     public static final String CONTENT_DISPOSITION = "Content-Disposition";
     public static final String AUTHORIZATION = "Authorization";
     
