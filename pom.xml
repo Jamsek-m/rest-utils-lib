@@ -23,7 +23,7 @@
         <jaxrs-api.version>2.1.1</jaxrs-api.version>
         <cdi-api.version>2.0</cdi-api.version>
 
-        <junit.version>4.13</junit.version>
+        <junit.version>4.13.1</junit.version>
         <arquillian.version>1.6.0.Final</arquillian.version>
         <kumuluzee-arquillian-container.version>1.1.0</kumuluzee-arquillian-container.version>
     </properties>
