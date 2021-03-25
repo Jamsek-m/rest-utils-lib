@@ -43,7 +43,7 @@ pipeline {
             slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n'${COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
         }
         failure {
-            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n$'{COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
+            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n'${COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
         }
     }
 }
