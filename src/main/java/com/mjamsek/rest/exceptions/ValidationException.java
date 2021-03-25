@@ -20,7 +20,8 @@
  */
 package com.mjamsek.rest.exceptions;
 
-import com.mjamsek.rest.common.HttpStatus;
+import static com.mjamsek.rest.Rest.HttpStatus;
+
 import com.mjamsek.rest.exceptions.dto.ExceptionResponse;
 
 /**

@@ -1,4 +1,4 @@
-package com.mjamsek.rest.test.common;
+package com.mjamsek.rest.test.types;
 
 @FunctionalInterface
 public interface ValidationExecutor {

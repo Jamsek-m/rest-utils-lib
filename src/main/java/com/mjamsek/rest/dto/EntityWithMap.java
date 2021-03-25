@@ -23,6 +23,7 @@ package com.mjamsek.rest.dto;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,10 +36,11 @@ import java.util.Map;
  */
 public class EntityWithMap<E> {
     
+    @JsonProperty("entity")
     private E entity;
     
     @JsonIgnore
-    private Map<String, Object> options = new HashMap<>();
+    private final Map<String, Object> options = new HashMap<>();
     
     public E getEntity() {
         return entity;

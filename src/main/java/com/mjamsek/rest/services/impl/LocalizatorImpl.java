@@ -20,9 +20,8 @@
  */
 package com.mjamsek.rest.services.impl;
 
-import com.mjamsek.rest.services.LocaleService;
+import com.mjamsek.rest.services.Localizator;
 
-import javax.enterprise.context.RequestScoped;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -36,12 +35,11 @@ import java.util.logging.Logger;
  * Locale service for translating property bundles
  *
  * @author Miha Jamsek
- * @since 1.0.0
+ * @since 2.0.0
  */
-@RequestScoped
-public class LocaleServiceImpl implements LocaleService {
+public class LocalizatorImpl implements Localizator {
     
-    private static final Logger LOG = LogManager.getLogManager().getLogger(LocaleServiceImpl.class.getSimpleName());
+    private static final Logger LOG = LogManager.getLogManager().getLogger(LocalizatorImpl.class.getSimpleName());
     
     private static final String TRANSLATION_DIR = "i18n/translations";
     private static final Locale LOCALE_EN = new Locale("en", "US");

@@ -119,6 +119,16 @@ public class RestException extends RuntimeException {
         return this;
     }
     
+    /**
+     * Replaces exception's response and loses all previously set values
+     * @param response new response object
+     * @return <code>this</code> instance
+     */
+    public RestException replaceResponse(ExceptionResponse response) {
+        this.response = response;
+        return this;
+    }
+    
     public RestException addAdditionalData(String dataKey, Object dataValue) {
         if (this.response.getAdditionalData() == null) {
             this.response.setAdditionalData(new HashMap<>());

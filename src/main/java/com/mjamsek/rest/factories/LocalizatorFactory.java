@@ -18,16 +18,21 @@
  *  software. See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.mjamsek.rest.common;
+package com.mjamsek.rest.factories;
+
+import com.mjamsek.rest.services.Localizator;
+import com.mjamsek.rest.services.impl.LocalizatorImpl;
 
 /**
- * Constants not provided by JAX-RS spec
+ * Factory for producing {@link Localizator}
  *
  * @author Miha Jamsek
- * @since 1.0.0
+ * @since 2.0.0
  */
-public class HttpStatus {
-    public static final int BAD_REQUEST = 400;
-    public static final int VALIDATION_FAILED = 422;
-    public static final int FAILED_DEPENDENCY = 424;
+public class LocalizatorFactory {
+    
+    public static Localizator getNewInstance() {
+        return new LocalizatorImpl();
+    }
+    
 }

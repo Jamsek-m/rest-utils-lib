@@ -28,6 +28,13 @@ pipeline {
                 }
             }
         }
+        stage("Running tests") {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nexus-username', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh "mvn clean test -Dci.nexus.user=$USERNAME -Dci.nexus.pass=$PASSWORD --settings .ci/settings.xml"
+                }
+            }
+        }
         stage("Packaging application") {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-username', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {

@@ -18,21 +18,33 @@
  *  software. See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.mjamsek.rest.factories;
+package com.mjamsek.rest.services;
 
-import com.mjamsek.rest.services.LocaleService;
-import com.mjamsek.rest.services.impl.LocaleServiceImpl;
+import java.util.Locale;
 
 /**
- * Factory for producing {@link LocaleService} in non-CDI context
+ * Locale service for translating property bundles
  *
  * @author Miha Jamsek
- * @since 1.0.0
+ * @since 2.0.0
  */
-public class LocaleServiceFactory {
+public interface Localizator {
     
-    public static LocaleService getInstance() {
-        return new LocaleServiceImpl();
-    }
+    /**
+     * Returns translated text from property bundle with specified language or default if not provided.
+     * @param key key of message in property bundle
+     * @param locale language to translate message to
+     * @return translated message string
+     */
+    String getTranslation(String key, Locale locale);
+    
+    /**
+     * Returns translated text from property bundle with specified language or default if not provided.
+     * @param key key of message in property bundle
+     * @param locale language to translate message to
+     * @param params params that will be included in message if there are any placeholders
+     * @return translated message string
+     */
+    String getTranslation(String key, Locale locale, Object... params);
     
 }

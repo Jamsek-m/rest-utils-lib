@@ -21,6 +21,7 @@
 package com.mjamsek.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Data wrapper for entity with additional strongly-typed params
@@ -31,8 +32,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EntityWithOptions<E, O> {
     
+    @JsonProperty("entity")
     private E entity;
     
+    @JsonProperty("options")
     private O options;
     
     public E getEntity() {
