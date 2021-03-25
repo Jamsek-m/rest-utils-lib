@@ -20,6 +20,7 @@ pipeline {
                     pom = readMavenPom file:"pom.xml"
                     PROJECT_VERSION = pom.version
                     COMMIT_MESSAGE = sh script: "git show -s --pretty='%s'", returnStdout: true
+                    COMMIT_MESSAGE = COMMIT_MESSAGE.trim()
                     COMMIT_AUTHOR = sh script: "git show -s --pretty='%cn <%ce>'", returnStdout: true
                     COMMIT_AUTHOR = COMMIT_AUTHOR.trim()
                 }
