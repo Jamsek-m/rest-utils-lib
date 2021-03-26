@@ -11,6 +11,7 @@ pipeline {
         COMMIT_AUTHOR = ""
         COMMIT_MESSAGE = ""
         PROJECT_VERSION = ""
+        COMMIT_URL = ""
     }
 
     stages {
@@ -23,7 +24,7 @@ pipeline {
                     COMMIT_MESSAGE = COMMIT_MESSAGE.trim()
                     COMMIT_AUTHOR = sh script: "git show -s --pretty='%cn <%ce>'", returnStdout: true
                     COMMIT_AUTHOR = COMMIT_AUTHOR.trim()
-                    COMMIT_URL = GIT_URL
+                    COMMIT_URL = GIT_URL + "/commit/" + GIT_COMMIT
                 }
             }
         }
