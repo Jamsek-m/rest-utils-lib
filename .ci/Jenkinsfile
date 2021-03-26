@@ -23,6 +23,7 @@ pipeline {
                     COMMIT_MESSAGE = COMMIT_MESSAGE.trim()
                     COMMIT_AUTHOR = sh script: "git show -s --pretty='%cn <%ce>'", returnStdout: true
                     COMMIT_AUTHOR = COMMIT_AUTHOR.trim()
+                    COMMIT_URL = GIT_URL
                 }
             }
         }
@@ -41,7 +42,7 @@ pipeline {
     }
     post {
         success {
-            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n'${COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
+            slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '<${COMMIT_URL}|${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n'${COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
         }
         failure {
             slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME}' [<${env.BUILD_URL}|${env.BUILD_NUMBER}>]:\n'${COMMIT_MESSAGE}' from ${COMMIT_AUTHOR}")
