@@ -310,7 +310,7 @@ class Sample {
             .setMessage("Server error")
             .setCode("error.server")
             .setEntity("Person")
-            .setField("lastName"()
+            .setField("lastName")
             .setMoreInfo("see more at: https://google.com");
             
         throw new RestException("code.error")
