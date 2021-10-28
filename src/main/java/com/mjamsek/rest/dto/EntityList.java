@@ -33,19 +33,19 @@ public class EntityList<E> {
     
     private long count;
     
-    private List<E> entityList;
+    private List<E> entities;
     
     public EntityList() {
-        this.entityList = new ArrayList<>();
+        this.entities = new ArrayList<>();
     }
     
     public EntityList(List<E> list) {
-        this.entityList = list;
+        this.entities = list;
         this.count = list.size();
     }
     
     public EntityList(List<E> list, long count) {
-        this.entityList = list;
+        this.entities = list;
         this.count = count;
     }
     
@@ -57,11 +57,21 @@ public class EntityList<E> {
         this.count = count;
     }
     
+    @Deprecated(since = "2.1.0", forRemoval = true)
     public List<E> getEntityList() {
-        return entityList;
+        return entities;
     }
     
-    public void setEntityList(List<E> entityList) {
-        this.entityList = entityList;
+    @Deprecated(since = "2.1.0", forRemoval = true)
+    public void setEntityList(List<E> entities) {
+        this.entities = entities;
+    }
+    
+    public List<E> getEntities() {
+        return entities;
+    }
+    
+    public void setEntities(List<E> entities) {
+        this.entities = entities;
     }
 }
