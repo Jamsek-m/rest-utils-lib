@@ -11,6 +11,10 @@ import com.mjamsek.rest.services.impl.ValidatorImpl;
  */
 public class ValidatorFactory {
     
+    private ValidatorFactory() {
+    
+    }
+    
     public static Validator getNewInstance() {
         return new ValidatorImpl();
     }

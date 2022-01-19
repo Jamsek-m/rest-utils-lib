@@ -28,6 +28,10 @@ package com.mjamsek.rest.utils;
  */
 public class UrlUtil {
     
+    private UrlUtil() {
+    
+    }
+    
     /**
      * Removes trailing slash in URL
      * @param url url to be trimmed

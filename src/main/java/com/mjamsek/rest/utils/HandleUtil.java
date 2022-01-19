@@ -20,34 +20,40 @@
  */
 package com.mjamsek.rest.utils;
 
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.core.UriInfo;
-import java.net.URI;
+import java.util.Locale;
 
 /**
- * Utility class for handling resources
+ * Utility class for creating URL handle
  *
  * @author Miha Jamsek
- * @since 1.0.0
+ * @since 2.2.0
  */
-public class Resources {
+public class HandleUtil {
     
-    private Resources() {
+    public static final String HANDLE_REGEX = "^[a-z0-9-_]+$";
+    
+    private HandleUtil() {
     
     }
     
     /**
-     * Concatenates multiple paths into complete {@link java.net.URI}
-     * @param uriInfo uri context
-     * @param paths list of paths to be concatenated
-     * @return concatenated paths into URI
+     * Creates URL handle from given string
+     * @param value string to be converted
+     * @return URL safe string
      */
-    public static URI resourceUri(UriInfo uriInfo, String... paths) {
-        UriBuilder uriBuilder = uriInfo.getBaseUriBuilder();
-        for (String path : paths) {
-            uriBuilder = uriBuilder.path(path);
-        }
-        return uriBuilder.build();
+    public static String toHandle(String value) {
+        value = value.toLowerCase(Locale.ROOT).trim();
+        value = value.replaceAll(" +", " ");
+        value = value.replaceAll("\\s", "-");
+        return value.replaceAll("[^a-z0-9-_]", "");
     }
     
+    /**
+     * Checks if given string is valid handle
+     * @param handle value to be verified
+     * @return <code>true</code>, if value is valid handle, <code>false</code> otherwise
+     */
+    public static boolean validHandle(String handle) {
+        return handle.matches(HANDLE_REGEX);
+    }
 }

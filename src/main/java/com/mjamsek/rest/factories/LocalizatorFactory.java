@@ -31,6 +31,10 @@ import com.mjamsek.rest.services.impl.LocalizatorImpl;
  */
 public class LocalizatorFactory {
     
+    private LocalizatorFactory() {
+    
+    }
+    
     public static Localizator getNewInstance() {
         return new LocalizatorImpl();
     }

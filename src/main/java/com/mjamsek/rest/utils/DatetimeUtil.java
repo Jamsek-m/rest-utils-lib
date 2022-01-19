@@ -32,6 +32,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class DatetimeUtil {
     
+    private DatetimeUtil() {
+    
+    }
+    
     /**
      * Returns date that is <code>daysBefore</code> days before current time
      *

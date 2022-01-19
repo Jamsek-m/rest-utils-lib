@@ -20,34 +20,41 @@
  */
 package com.mjamsek.rest.utils;
 
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.core.UriInfo;
-import java.net.URI;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Utility class for handling resources
+ * Utility class for set operations
  *
  * @author Miha Jamsek
- * @since 1.0.0
+ * @since 2.2.0
  */
-public class Resources {
+public class SetUtil {
     
-    private Resources() {
+    private SetUtil() {
     
     }
     
     /**
-     * Concatenates multiple paths into complete {@link java.net.URI}
-     * @param uriInfo uri context
-     * @param paths list of paths to be concatenated
-     * @return concatenated paths into URI
+     * Returns set union between two given sets
+     *
+     * @return union of two sets
      */
-    public static URI resourceUri(UriInfo uriInfo, String... paths) {
-        UriBuilder uriBuilder = uriInfo.getBaseUriBuilder();
-        for (String path : paths) {
-            uriBuilder = uriBuilder.path(path);
-        }
-        return uriBuilder.build();
+    public static <T> Set<T> union(Set<T> set1, Set<T> set2) {
+        Set<T> result = new HashSet<>(set1);
+        result.addAll(set2);
+        return result;
+    }
+    
+    /**
+     * Returns set intersection between two given sets
+     *
+     * @return intersection of two sets
+     */
+    public static <T> Set<T> intersection(Set<T> set1, Set<T> set2) {
+        Set<T> result = new HashSet<>(set1);
+        result.retainAll(set2);
+        return result;
     }
     
 }
