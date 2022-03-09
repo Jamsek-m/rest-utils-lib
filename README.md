@@ -43,7 +43,7 @@ class Sample {
     
     public void init() {
         // Get new instance in non-CDI context
-        this.validator = LocalizatorFactory.getNewInstance();
+        this.validator = ValidatorFactory.getNewInstance();
     }
     
     public void sample() {
