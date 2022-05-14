@@ -23,6 +23,7 @@ package com.mjamsek.rest.exceptions.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
@@ -53,7 +54,10 @@ public class ExceptionResponse {
         body.setField(this.field);
         body.setMoreInfo(this.moreInfo);
         body.setAdditionalData(this.additionalData);
-        return Response.status(this.status).entity(body).build();
+        return Response.status(this.status)
+            .entity(body)
+            .type(MediaType.APPLICATION_JSON)
+            .build();
     }
     
     public Integer getStatus() {

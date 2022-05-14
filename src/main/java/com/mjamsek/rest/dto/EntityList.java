@@ -35,6 +35,10 @@ public class EntityList<E> {
     
     private List<E> entities;
     
+    private Long offset;
+    
+    private Long limit;
+    
     public EntityList() {
         this.entities = new ArrayList<>();
     }
@@ -49,29 +53,37 @@ public class EntityList<E> {
         this.count = count;
     }
     
+    public EntityList(List<E> list, long count, Long offset, Long limit) {
+        this.entities = list;
+        this.count = count;
+        this.limit = limit;
+        this.offset = offset;
+    }
+    
     public long getCount() {
         return count;
     }
     
+    @Deprecated(since = "2.3.0", forRemoval = true)
     public void setCount(long count) {
         this.count = count;
-    }
-    
-    @Deprecated(since = "2.1.0", forRemoval = true)
-    public List<E> getEntityList() {
-        return entities;
-    }
-    
-    @Deprecated(since = "2.1.0", forRemoval = true)
-    public void setEntityList(List<E> entities) {
-        this.entities = entities;
     }
     
     public List<E> getEntities() {
         return entities;
     }
     
+    @Deprecated(since = "2.3.0", forRemoval = true)
     public void setEntities(List<E> entities) {
         this.entities = entities;
     }
+    
+    public Long getOffset() {
+        return offset;
+    }
+    
+    public Long getLimit() {
+        return limit;
+    }
+    
 }
