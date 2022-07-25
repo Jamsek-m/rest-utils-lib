@@ -45,7 +45,7 @@ public class ExceptionResponse implements Serializable {
     protected String moreInfo;
     @JsonIgnore
     protected transient Object[] params;
-    private Map<String, Object> additionalData;
+    private Map<String, Serializable> additionalData;
     
     public Response createResponse() {
         ExceptionResponse body = new ExceptionResponse();
@@ -118,11 +118,11 @@ public class ExceptionResponse implements Serializable {
         this.params = params;
     }
     
-    public Map<String, Object> getAdditionalData() {
+    public Map<String, Serializable> getAdditionalData() {
         return new HashMap<>(additionalData);
     }
     
-    public void setAdditionalData(Map<String, Object> additionalData) {
+    public void setAdditionalData(Map<String, Serializable> additionalData) {
         this.additionalData = new HashMap<>(additionalData);
     }
 }
