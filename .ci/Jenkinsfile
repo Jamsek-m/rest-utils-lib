@@ -12,6 +12,7 @@ pipeline {
         COMMIT_MESSAGE = ""
         PROJECT_VERSION = ""
         COMMIT_URL = ""
+        MAVEN_HOME = tool 'mvn-3.6'
     }
 
     stages {
@@ -25,6 +26,13 @@ pipeline {
                     COMMIT_AUTHOR = sh script: "git show -s --pretty='%cn <%ce>'", returnStdout: true
                     COMMIT_AUTHOR = COMMIT_AUTHOR.trim()
                     COMMIT_URL = GIT_URL + "/commit/" + GIT_COMMIT
+                }
+            }
+        }
+        stage("SonarQube Analysis") {
+            steps {
+                withSonarQubeEnv(installationName: "sonarqube", credentialsId: "sonarqube-token") {
+                    sh "${MAVEN_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jamsek-m_rest-utils-lib_AYI04bJe-fICZuvkjPis"
                 }
             }
         }
