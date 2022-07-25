@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,7 +36,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ExceptionResponse {
+public class ExceptionResponse implements Serializable {
     protected Integer status;
     protected String message;
     protected String code;
@@ -42,8 +44,8 @@ public class ExceptionResponse {
     protected String field;
     protected String moreInfo;
     @JsonIgnore
-    protected Object[] params;
-    protected Map<String, Object> additionalData;
+    protected transient Object[] params;
+    private Map<String, Object> additionalData;
     
     public Response createResponse() {
         ExceptionResponse body = new ExceptionResponse();
@@ -117,10 +119,10 @@ public class ExceptionResponse {
     }
     
     public Map<String, Object> getAdditionalData() {
-        return additionalData;
+        return new HashMap<>(additionalData);
     }
     
     public void setAdditionalData(Map<String, Object> additionalData) {
-        this.additionalData = additionalData;
+        this.additionalData = new HashMap<>(additionalData);
     }
 }

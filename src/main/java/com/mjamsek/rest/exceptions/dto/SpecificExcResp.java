@@ -1,7 +1,12 @@
 package com.mjamsek.rest.exceptions.dto;
 
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
 
+/**
+ * @deprecated Test class, released by accident. Should not be used.
+ */
+@Deprecated(since = "2.5.0", forRemoval = true)
 public class SpecificExcResp extends ExceptionResponse {
     
     private String testFld;
@@ -15,7 +20,7 @@ public class SpecificExcResp extends ExceptionResponse {
         body.setEntity(this.entity);
         body.setField(this.field);
         body.setMoreInfo(this.moreInfo);
-        body.setAdditionalData(this.additionalData);
+        body.setAdditionalData(new HashMap<>());
         return Response.status(this.status).entity(body).build();
     }
     
