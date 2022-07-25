@@ -43,9 +43,33 @@ public class QueryUtil {
     }
     
     /**
+     * Creates QueryParameters with single filter (which can then be extended)
+     *
+     * @param filter single filter to apply
+     * @return constructed QueryParameters
+     */
+    public static QueryParameters fromSingleFilter(QueryFilter filter) {
+        QueryParameters queryParameters = new QueryParameters();
+        overrideFilterParam(filter, queryParameters);
+        return queryParameters;
+    }
+    
+    /**
+     * Creates QueryParameters with single order (which can then be extended)
+     *
+     * @param order single order to apply
+     * @return constructed QueryParameters
+     */
+    public static QueryParameters fromSingleOrder(QueryOrder order) {
+        QueryParameters queryParameters = new QueryParameters();
+        overrideOrderParam(order, queryParameters);
+        return queryParameters;
+    }
+    
+    /**
      * Sets given filter if not present yet (matched by filter name).
      *
-     * @param filter          default filter
+     * @param filter      default filter
      * @param queryParams query parameters with filters
      */
     public static void setDefaultFilterParam(QueryFilter filter, QueryParameters queryParams) {
@@ -55,9 +79,9 @@ public class QueryUtil {
     /**
      * Sets given filter if not present yet (matched by filter name).
      *
-     * @param filter          default filter
+     * @param filter      default filter
      * @param queryParams query parameters with filters
-     * @param operation operation between filters (defaults to AND)
+     * @param operation   operation between filters (defaults to AND)
      */
     public static void setDefaultFilterParam(QueryFilter filter, FilterExpressionOperation operation, QueryParameters queryParams) {
         if (queryParams.getFilterExpression() != null) {
@@ -117,7 +141,7 @@ public class QueryUtil {
                 queryParameters.setFilterExpression(new QueryFilterExpression(filter));
                 return;
             }
-
+            
             // Single node with same name filter - replace with new node
             if (queryParameters.getFilterExpression().isLeaf() &&
                 queryParameters.getFilterExpression().value().getField().equals(filter.getField())) {
@@ -220,7 +244,7 @@ public class QueryUtil {
         if (queryParameters.getOrder() != null) {
             boolean foundOrder = queryParameters.getOrder().stream()
                 .anyMatch(queryOrder -> queryOrder.getField().equals(order.getField()));
-        
+            
             if (!foundOrder) {
                 queryParameters.getOrder().add(order);
             }
