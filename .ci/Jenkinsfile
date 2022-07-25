@@ -32,7 +32,7 @@ pipeline {
         stage("SonarQube Analysis") {
             steps {
                 withSonarQubeEnv(installationName: "sonarqube", credentialsId: "sonarqube-token") {
-                    sh "${MAVEN_HOME}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jamsek-m_rest-utils-lib_AYI04bJe-fICZuvkjPis"
+                    sh "${MAVEN_HOME}/bin/mvn clean verify sonar:sonar -P generate-coverage -Dsonar.projectKey=Jamsek-m_rest-utils-lib_AYI04bJe-fICZuvkjPis"
                 }
             }
         }
