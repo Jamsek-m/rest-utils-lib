@@ -20,6 +20,9 @@
  */
 package com.mjamsek.rest.dto;
 
+import com.mjamsek.rest.Rest;
+
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +78,20 @@ public class EntityList<E> {
     
     public Long getLimit() {
         return limit;
+    }
+    
+    public Response toResponse() {
+        Response.ResponseBuilder builder = Response.ok(entities)
+            .header(Rest.HttpHeaders.X_TOTAL_COUNT, count);
+        
+        if (limit != null) {
+            builder = builder.header(Rest.HttpHeaders.X_LIMIT, limit);
+        }
+        if (offset != null) {
+            builder = builder.header(Rest.HttpHeaders.X_OFFSET, offset);
+        }
+        
+        return builder.build();
     }
     
 }
