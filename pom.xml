@@ -99,6 +99,12 @@
             <groupId>com.kumuluz.ee</groupId>
             <artifactId>kumuluzee-jax-rs-jersey</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.kumuluz.ee</groupId>

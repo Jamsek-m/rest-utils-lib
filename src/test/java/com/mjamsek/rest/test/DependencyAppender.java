@@ -23,6 +23,7 @@ public class DependencyAppender implements MavenDependencyAppender {
         List<String> libs = new ArrayList<>();
         
         libs.add("com.kumuluz.ee:kumuluzee-jax-rs-jersey:");
+        libs.add("com.kumuluz.ee:kumuluzee-cdi-weld:");
         
         libs.add("com.fasterxml.jackson.core:jackson-databind:" + versionsBundle.getString("jackson-version"));
         
