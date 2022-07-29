@@ -20,6 +20,9 @@
  */
 package com.mjamsek.rest.dto;
 
+import com.mjamsek.rest.Rest;
+
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +34,9 @@ import java.util.List;
  */
 public class EntityList<E> {
     
-    private long count;
+    private final long count;
     
-    private List<E> entities;
+    private final List<E> entities;
     
     private Long offset;
     
@@ -41,6 +44,7 @@ public class EntityList<E> {
     
     public EntityList() {
         this.entities = new ArrayList<>();
+        this.count = 0;
     }
     
     public EntityList(List<E> list) {
@@ -64,18 +68,8 @@ public class EntityList<E> {
         return count;
     }
     
-    @Deprecated(since = "2.3.0", forRemoval = true)
-    public void setCount(long count) {
-        this.count = count;
-    }
-    
     public List<E> getEntities() {
-        return entities;
-    }
-    
-    @Deprecated(since = "2.3.0", forRemoval = true)
-    public void setEntities(List<E> entities) {
-        this.entities = entities;
+        return new ArrayList<>(entities);
     }
     
     public Long getOffset() {
@@ -84,6 +78,20 @@ public class EntityList<E> {
     
     public Long getLimit() {
         return limit;
+    }
+    
+    public Response toResponse() {
+        Response.ResponseBuilder builder = Response.ok(entities)
+            .header(Rest.HttpHeaders.X_TOTAL_COUNT, count);
+        
+        if (limit != null) {
+            builder = builder.header(Rest.HttpHeaders.X_LIMIT, limit);
+        }
+        if (offset != null) {
+            builder = builder.header(Rest.HttpHeaders.X_OFFSET, offset);
+        }
+        
+        return builder.build();
     }
     
 }

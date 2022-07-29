@@ -30,21 +30,35 @@ public class ValidatorTest {
     
     @Test
     public void notNull() {
-        // Assert invalid values are rejected
-        assertThrows(ValidationException.class, () -> validator.assertNotNull(null));
-        
         // Assert valid values are not rejected
         assertNotThrown(() -> validator.assertNotNull("test"));
         assertNotThrown(() -> validator.assertNotNull(""));
         assertNotThrown(() -> validator.assertNotNull("  "));
         assertNotThrown(() -> validator.assertNotNull(' '));
         assertNotThrown(() -> validator.assertNotNull('a'));
+        assertNotThrown(() -> validator.assertNotNull(false));
+        assertNotThrown(() -> validator.assertNotNull(true));
+    }
+    
+    @Test
+    public void notNullBool() {
+        // Assert valid values are not rejected
+        assertNotThrown(() -> validator.assertNotNull(false));
+        assertNotThrown(() -> validator.assertNotNull(true));
+    }
+    
+    @Test
+    public void notNullNumbers() {
         assertNotThrown(() -> validator.assertNotNull(123));
         assertNotThrown(() -> validator.assertNotNull(0));
         assertNotThrown(() -> validator.assertNotNull(0.0));
         assertNotThrown(() -> validator.assertNotNull(2.5));
-        assertNotThrown(() -> validator.assertNotNull(false));
-        assertNotThrown(() -> validator.assertNotNull(true));
+    }
+    
+    @Test
+    public void notNullThrows() {
+        // Assert invalid values are rejected
+        assertThrows(ValidationException.class, () -> validator.assertNotNull(null));
         
         // Assert thrown exception contains proper fields
         assertExceptionFields(
@@ -80,16 +94,6 @@ public class ValidatorTest {
     
     @Test
     public void regex() {
-        // Assert invalid values are rejected
-        assertThrows(ValidationException.class, () -> validator.assertRegex(null, SIMPLE_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("", SIMPLE_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("test@test", SIMPLE_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("123", SIMPLE_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("te st@test.com", Validator.EMAIL_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("test@te st.com", Validator.EMAIL_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("test@test.c om", Validator.EMAIL_REGEX));
-        assertThrows(ValidationException.class, () -> validator.assertRegex("test", Validator.EMAIL_REGEX));
-        
         // Assert valid values are not rejected
         assertNotThrown(() -> validator.assertRegex("", ".*"));
         assertNotThrown(() -> validator.assertRegex("simple-test", SIMPLE_REGEX));
@@ -100,6 +104,19 @@ public class ValidatorTest {
         assertNotThrown(() -> validator.assertRegex("test@mail.si", Validator.EMAIL_REGEX));
         assertNotThrown(() -> validator.assertRegex("test.test@mail.com", Validator.EMAIL_REGEX));
         assertNotThrown(() -> validator.assertRegex("test_test@mail.com", Validator.EMAIL_REGEX));
+    }
+    
+    @Test
+    public void regexThrows() {
+        // Assert invalid values are rejected
+        assertThrows(ValidationException.class, () -> validator.assertRegex(null, SIMPLE_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("", SIMPLE_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("test@test", SIMPLE_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("123", SIMPLE_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("te st@test.com", Validator.EMAIL_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("test@te st.com", Validator.EMAIL_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("test@test.c om", Validator.EMAIL_REGEX));
+        assertThrows(ValidationException.class, () -> validator.assertRegex("test", Validator.EMAIL_REGEX));
         
         // Assert thrown exception contains proper fields
         assertExceptionFields(

@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class EntityWithMap<E> {
     private E entity;
     
     @JsonIgnore
-    private final Map<String, Object> options = new HashMap<>();
+    private final Map<String, Serializable> options = new HashMap<>();
     
     public E getEntity() {
         return entity;
@@ -51,12 +52,12 @@ public class EntityWithMap<E> {
     }
     
     @JsonAnyGetter
-    public Map<String, Object> getOptions() {
+    public Map<String, Serializable> getOptions() {
         return options;
     }
     
     @JsonAnySetter
-    public void setOptions(String name, Object value) {
+    public void setOptions(String name, Serializable value) {
         this.options.put(name, value);
     }
 }

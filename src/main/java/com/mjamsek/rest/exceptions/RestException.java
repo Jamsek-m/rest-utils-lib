@@ -23,6 +23,7 @@ package com.mjamsek.rest.exceptions;
 import com.mjamsek.rest.exceptions.dto.ExceptionResponse;
 
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class RestException extends RuntimeException {
     
     protected ExceptionResponse response;
     
-    protected Throwable cause;
+    protected transient Throwable cause;
     
     public RestException(String code) {
         super(code);
@@ -129,7 +130,7 @@ public class RestException extends RuntimeException {
         return this;
     }
     
-    public RestException addAdditionalData(String dataKey, Object dataValue) {
+    public RestException addAdditionalData(String dataKey, Serializable dataValue) {
         if (this.response.getAdditionalData() == null) {
             this.response.setAdditionalData(new HashMap<>());
         }
@@ -137,7 +138,7 @@ public class RestException extends RuntimeException {
         return this;
     }
     
-    public RestException setAdditionalData(Map<String, Object> additionalData) {
+    public RestException setAdditionalData(Map<String, Serializable> additionalData) {
         this.response.setAdditionalData(additionalData);
         return this;
     }

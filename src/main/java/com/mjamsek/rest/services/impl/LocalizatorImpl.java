@@ -77,7 +77,7 @@ public class LocalizatorImpl implements Localizator {
             } catch (MissingResourceException e2) {
                 LOG.log(
                     Level.WARNING,
-                    "Cannot load translation bundle for language '{0}' or for fallback language 'en'!",
+                    "Cannot load translation bundle for language ''{0}'' or for fallback language 'en'!",
                     locale.toLanguageTag()
                 );
                 return Optional.empty();

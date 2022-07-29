@@ -28,6 +28,10 @@ package com.mjamsek.rest;
  */
 public class Rest {
     
+    private Rest() {
+    
+    }
+    
     /**
      * Constants for special HTTP headers
      *
@@ -35,6 +39,10 @@ public class Rest {
      * @since 2.0.0
      */
     public static class HttpHeaders {
+        
+        private HttpHeaders() {
+        
+        }
         
         public static final String X_SERVICE_NAME = "X-Service-Name";
         public static final String X_SERVICE_VERSION = "X-Service-Version";
@@ -71,6 +79,11 @@ public class Rest {
      * @since 2.0.0
      */
     public static class HttpStatus {
+        
+        private HttpStatus() {
+        
+        }
+        
         public static final int BAD_REQUEST = 400;
         public static final int VALIDATION_FAILED = 422;
         public static final int FAILED_DEPENDENCY = 424;
