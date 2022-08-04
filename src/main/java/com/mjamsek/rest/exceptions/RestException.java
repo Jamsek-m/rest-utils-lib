@@ -26,6 +26,7 @@ import javax.ws.rs.core.Response;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Base class for exception
@@ -41,8 +42,11 @@ public class RestException extends RuntimeException {
     
     protected transient Throwable cause;
     
+    protected final transient Map<String, Object> attributes;
+    
     public RestException(String code) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -51,6 +55,7 @@ public class RestException extends RuntimeException {
     
     public RestException(String code, Integer status) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = status;
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -59,6 +64,7 @@ public class RestException extends RuntimeException {
     
     public RestException(String code, String field) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -68,6 +74,7 @@ public class RestException extends RuntimeException {
     
     public RestException(String code, Integer status, String field) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = status;
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -77,6 +84,7 @@ public class RestException extends RuntimeException {
     
     public RestException(String code, String field, String entity) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = Response.Status.INTERNAL_SERVER_ERROR.getStatusCode();
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -87,6 +95,7 @@ public class RestException extends RuntimeException {
     
     public RestException(String code, Integer status, String field, String entity) {
         super(code);
+        this.attributes = new HashMap<>();
         this.status = status;
         this.response = new ExceptionResponse();
         this.response.setCode(code);
@@ -120,6 +129,16 @@ public class RestException extends RuntimeException {
         return this;
     }
     
+    public RestException setAttribute(String attributeName, Object attributeValue) {
+        this.attributes.put(attributeName, attributeValue);
+        return this;
+    }
+    
+    public RestException clearAttribute(String attributeName) {
+        this.attributes.remove(attributeName);
+        return this;
+    }
+    
     /**
      * Replaces exception's response and loses all previously set values
      * @param response new response object
@@ -149,5 +168,13 @@ public class RestException extends RuntimeException {
     
     public ExceptionResponse getResponse() {
         return this.response;
+    }
+    
+    public Map<String, Object> getAttributes() {
+        return new HashMap<>(this.attributes);
+    }
+    
+    public Optional<Object> getAttribute(String attributeName) {
+        return Optional.ofNullable(this.attributes.get(attributeName));
     }
 }
