@@ -23,7 +23,6 @@ package com.mjamsek.rest.exceptions;
 import com.mjamsek.rest.exceptions.dto.ExceptionResponse;
 
 import javax.ws.rs.core.Response;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

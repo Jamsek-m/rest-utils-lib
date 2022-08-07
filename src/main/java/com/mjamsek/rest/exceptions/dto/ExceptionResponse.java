@@ -45,7 +45,12 @@ public class ExceptionResponse implements Serializable {
     protected String moreInfo;
     @JsonIgnore
     protected transient Object[] params;
-    private Map<String, String> additionalData;
+    private HashMap<String, String> additionalData;
+    
+    public ExceptionResponse() {
+        this.additionalData = new HashMap<>();
+        this.params = new Object[]{};
+    }
     
     public Response createResponse() {
         ExceptionResponse body = new ExceptionResponse();
@@ -123,6 +128,10 @@ public class ExceptionResponse implements Serializable {
     }
     
     public void setAdditionalData(Map<String, String> additionalData) {
-        this.additionalData = new HashMap<>(additionalData);
+        if (additionalData != null) {
+            this.additionalData = new HashMap<>(additionalData);
+        } else {
+            this.additionalData = new HashMap<>();
+        }
     }
 }
