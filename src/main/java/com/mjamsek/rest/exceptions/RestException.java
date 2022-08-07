@@ -149,7 +149,7 @@ public class RestException extends RuntimeException {
         return this;
     }
     
-    public RestException addAdditionalData(String dataKey, Serializable dataValue) {
+    public RestException addAdditionalData(String dataKey, String dataValue) {
         if (this.response.getAdditionalData() == null) {
             this.response.setAdditionalData(new HashMap<>());
         }
@@ -157,7 +157,7 @@ public class RestException extends RuntimeException {
         return this;
     }
     
-    public RestException setAdditionalData(Map<String, Serializable> additionalData) {
+    public RestException setAdditionalData(Map<String, String> additionalData) {
         this.response.setAdditionalData(additionalData);
         return this;
     }
