@@ -20,7 +20,7 @@
 
         <kumuluzee.version>3.10.0</kumuluzee.version>
         <kumuluzee-rest.version>1.5.1</kumuluzee-rest.version>
-        <jackson.version>2.12.6.1</jackson.version>
+        <jackson.version>2.13.4.1</jackson.version>
         <jaxrs-api.version>2.1.1</jaxrs-api.version>
         <cdi-api.version>2.0</cdi-api.version>
 
