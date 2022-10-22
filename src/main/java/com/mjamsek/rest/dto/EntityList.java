@@ -25,6 +25,9 @@ import com.mjamsek.rest.Rest;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Data wrapper for entity list and count of all entities
@@ -78,6 +81,35 @@ public class EntityList<E> {
     
     public Long getLimit() {
         return limit;
+    }
+    
+    /**
+     * Maps all elements of EntityList to new type, using given mapper
+     * @param mapper function, mapping from current type to new type
+     * @return new EntityList instance with entities of new type
+     * @param <T> type of new EntityList
+     */
+    public <T> EntityList<T> map(Function<E, T> mapper) {
+        return new EntityList<>(
+            this.entities.stream().map(mapper).collect(Collectors.toList()),
+            this.count,
+            this.offset,
+            this.limit
+        );
+    }
+    
+    /**
+     * Filters elements of EntityList, according to given predicate
+     * @param predicate predicate, determining which entities to include in new instance
+     * @return new EntityList instance with entities, where predicate function returns true.
+     */
+    public EntityList<E> filter(Predicate<E> predicate) {
+        return new EntityList<>(
+            this.entities.stream().filter(predicate).collect(Collectors.toList()),
+            this.count,
+            this.offset,
+            this.limit
+        );
     }
     
     public Response toResponse() {
